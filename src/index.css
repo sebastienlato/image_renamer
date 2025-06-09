@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: theme('colors.cyber.darker');
+  color: theme('colors.gray.100');
+}
+
+@layer components {
+  .cyber-input {
+    @apply bg-cyber-gray border-cyber-blue/20 text-gray-100 rounded-md 
+    focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue/50 
+    placeholder-gray-500;
+  }
+
+  .cyber-card {
+    @apply bg-cyber-dark border border-cyber-blue/20 rounded-lg 
+    shadow-lg shadow-cyber-blue/5 backdrop-blur-sm;
+  }
+
+  .cyber-button {
+    @apply bg-gradient-to-r from-cyber-blue to-cyber-indigo 
+    hover:from-cyber-indigo hover:to-cyber-blue text-cyber-darker 
+    font-medium transition-all duration-200 shadow-lg 
+    shadow-cyber-blue/20 hover:shadow-cyber-blue/30;
+  }
+}
