@@ -47,8 +47,8 @@ export const generateNewFileName = (
   index: number,
   config: RenameConfig
 ): string => {
-  const paddedNumber = String(config.startNumber + index).padStart(3, "0");
-  return `${config.prefix}${paddedNumber}${config.fileType}`;
+  const sequenceNumber = config.startNumber + index;
+  return `${config.prefix}${sequenceNumber}${config.fileType}`;
 };
 
 export const downloadZip = async (images: ImageFile[]): Promise<void> => {

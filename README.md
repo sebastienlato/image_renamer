@@ -1,90 +1,54 @@
 # Image Renamer
 
-A modern React application that allows you to efficiently rename multiple images at once using customizable patterns and download them as a zip file.
+Image Renamer is a Vite + React + TypeScript application that batch-renames images using configurable prefixes, numbering, and extensions, then packages everything into a downloadable ZIP. The UI is optimized for drag-and-drop workflows and gives instant previews of the updated filenames so you can validate the pattern before exporting.
 
-## 🚀 Features
+![Image Renamer UI](screenshots/screenshot.png)
 
-- **Drag and Drop Interface** - Easy upload of multiple images simultaneously
-- **Custom Naming Patterns** - Set prefix, starting number, and file type
-- **Live Preview** - See your renamed images before downloading
-- **Batch Download** - Get all renamed images in a convenient zip file
-- **Responsive Design** - Works on mobile, tablet, and desktop devices
-- **Modern UI** - Built with a sleek cyber-themed interface
+## Features
+- **Drag & Drop uploads** powered by `react-dropzone` with live thumbnail previews.
+- **Flexible naming rules** for prefix, starting number (no forced padding), and extension.
+- **Instant feedback** as removal or configuration changes update all filenames in place.
+- **One-click ZIP export** using `JSZip` + `file-saver`, with automatic reset after download.
+- **Tailwind-driven cyber theme** responsive across desktop and mobile.
 
-## 🛠️ Technologies
-
-- **React** - UI library
-- **TypeScript** - For type safety
-- **Tailwind CSS** - For styling
-- **Vite** - Build tool
-- **react-dropzone** - For drag and drop functionality
-- **jszip** - For creating zip archives
-- **file-saver** - For downloading files
-- **lucide-react** - For icons
-
-## 📋 Prerequisites
-
-- Node.js (v18.0.0 or newer)
-- npm or yarn
-
-## 🚀 Installation
-
-1. Clone the repository:
-```bash
-git clone <your-repo-url>
-cd image-renamer
+## Project Structure
 ```
-
-2. Install dependencies:
-```bash
-npm install
-# or
-yarn
+src/
+  App.tsx          # Main layout and state management
+  components/      # DropZone, ConfigForm, ImageList UI pieces
+  utils/           # File helpers (previews, renaming, zip)
+  types/           # Shared TypeScript contracts
 ```
+Build/tooling config lives at the repo root (`vite.config.ts`, `tailwind.config.js`, `eslint.config.js`, `tsconfig*.json`). Screenshots for documentation live under `screenshots/`.
 
-3. Start the development server:
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Getting Started
+1. **Prerequisites**: Node.js ≥ 18 and npm.
+2. **Install**:
+   ```bash
+   npm install
+   ```
+3. **Run locally**:
+   ```bash
+   npm run dev
+   ```
+   Visit `http://localhost:5173`.
 
-4. Open your browser and navigate to `http://localhost:5173`
+## Available Scripts
+- `npm run dev` – start the Vite dev server with hot reload.
+- `npm run build` – create a production build in `dist/`.
+- `npm run preview` – serve the production build locally for smoke tests.
+- `npm run lint` – run ESLint using the flat config.
 
-## 🔨 Build
+## Usage
+1. Drop or browse for JPG/PNG/GIF/BMP/WEBP images.
+2. Set the prefix, starting number, and desired extension in the Config panel.
+3. Remove unwanted files from the preview grid as needed.
+4. Click **Download Zip** to export; the view resets automatically so you can start another batch.
 
-To build the project for production:
+## Development Notes
+- Use functional components and hooks; keep business logic in `src/utils`.
+- Tailwind utilities and custom `cyber-*` classes handle styling—avoid inline styles unless necessary.
+- Tests are not yet implemented; when adding them, prefer Vitest + React Testing Library mirrored under `src/**/__tests__`.
 
-```bash
-npm run build
-# or
-yarn build
-```
-
-The build output will be in the `dist` directory.
-
-## 🧑‍💻 Usage
-
-1. **Upload Images**:
-   - Drag and drop images onto the drop zone
-   - Or click the drop zone to select files from your device
-
-2. **Configure Naming Pattern**:
-   - Set a prefix (e.g., "vacation")
-   - Choose a starting number
-   - Select the desired file type (jpg, png, etc.)
-
-3. **Review & Adjust**:
-   - Preview the new file names in the image list
-   - Remove any unwanted images
-
-4. **Download**:
-   - Click the "Download Zip" button to get all renamed images in a zip file
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## ✨ Credits
-
-Developed with ❤️ using React and Tailwind CSS.
+## License
+MIT License. See `LICENSE` for details.

@@ -6,16 +6,24 @@ import { ImageList } from './components/ImageList';
 import { ImageFile, RenameConfig, FileType } from './types';
 import { generateNewFileName, downloadZip } from './utils/fileHelpers';
 
+const createDefaultConfig = (): RenameConfig => ({
+  prefix: 'image',
+  startNumber: 1,
+  fileType: '.jpg' as FileType,
+});
+
 function App() {
   const [images, setImages] = React.useState<ImageFile[]>([]);
-  const [config, setConfig] = React.useState<RenameConfig>({
-    prefix: 'image',
-    startNumber: 1,
-    fileType: '.jpg' as FileType,
-  });
+  const [config, setConfig] = React.useState<RenameConfig>(createDefaultConfig);
 
   const handleFilesAccepted = (newFiles: ImageFile[]) => {
-    setImages((prev) => [...prev, ...newFiles]);
+    setImages((prev) => {
+      const combined = [...prev, ...newFiles];
+      return combined.map((image, index) => ({
+        ...image,
+        newName: generateNewFileName(index, config),
+      }));
+    });
   };
 
   const handleConfigChange = (newConfig: RenameConfig) => {
@@ -38,10 +46,14 @@ function App() {
     });
   };
 
-  const handleDownload = () => {
-    if (images.length > 0) {
-      downloadZip(images);
+  const handleDownload = async () => {
+    if (images.length === 0) {
+      return;
     }
+
+    await downloadZip(images);
+    setImages([]);
+    setConfig(createDefaultConfig());
   };
 
   React.useEffect(() => {
