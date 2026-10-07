@@ -66,7 +66,7 @@ function App() {
         <div className="absolute inset-0 bg-cyber-glow pointer-events-none" />
         <div className="space-y-8 relative">
           <div className="text-center">
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-cyber-blue to-cyber-indigo text-transparent bg-clip-text">
+            <h1 className="text-4xl font-bold bg-linear-to-r from-cyber-blue to-cyber-indigo text-transparent bg-clip-text">
               Image Renamer
             </h1>
             <p className="mt-2 text-gray-400">
