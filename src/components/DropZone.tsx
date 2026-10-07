@@ -103,7 +103,7 @@ export const DropZone: React.FC<DropZoneProps> = ({ onFilesAccepted }) => {
                 }`}
               />
             </div>
-            <p className="text-xl font-medium bg-gradient-to-r from-cyber-blue to-cyber-indigo text-transparent bg-clip-text">
+            <p className="text-xl font-medium bg-linear-to-r from-cyber-blue to-cyber-indigo text-transparent bg-clip-text">
               {isDragActive
                 ? "Drop your folder or images here..."
                 : "Drag & drop a folder or images here"}
